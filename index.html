@@ -190,11 +190,28 @@
   @media(max-width:680px){.who .who-top{grid-template-columns:1fr}}
 
   /* Carrusel de testimonios en movimiento continuo */
-  .testi-marquee{margin-top:34px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .testi-wrap{position:relative;margin-top:34px}
+  .testi-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
   .testi-track{display:flex;gap:22px;width:max-content;animation:testiScroll 48s linear infinite}
   .testi-marquee:hover .testi-track{animation-play-state:paused}
   @keyframes testiScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.testi-track{animation:none}}
+  /* Botones de control del carrusel */
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:46px;height:46px;border-radius:50%;border:2px solid rgba(178,142,225,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;background:rgba(255,248,240,.9);box-shadow:0 4px 18px rgba(145,102,201,.22);visibility:hidden;transition:background .2s,transform .2s,box-shadow .2s;padding:0}
+  .car-btn.left{left:-23px}
+  .car-btn.right{right:-23px}
+  .car-btn svg{width:22px;height:22px;fill:var(--lila-deep);transition:fill .2s}
+  .car-btn:hover{background:var(--lila);box-shadow:0 6px 22px rgba(145,102,201,.4);transform:translateY(-50%) scale(1.1)}
+  .car-btn:hover svg{fill:var(--crema)}
+  .car-btn:active{transform:translateY(-50%) scale(.97)}
+  /* zona activa: indicador sutil en borde del carrusel */
+  .testi-marquee::before,.testi-marquee::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:10;pointer-events:none;opacity:0;transition:opacity .3s}
+  .testi-marquee{position:relative}
+  .testi-marquee::before{left:0;background:linear-gradient(90deg,rgba(178,142,225,.18),transparent)}
+  .testi-marquee::after{right:0;background:linear-gradient(270deg,rgba(178,142,225,.18),transparent)}
+  .testi-marquee.zone-left::before{opacity:1}
+  .testi-marquee.zone-right::after{opacity:1}
+  @media(max-width:700px){.car-btn{visibility:hidden;width:38px;height:38px}.car-btn.left{left:4px}.car-btn.right{right:4px}}
   .tcard{flex:0 0 330px;background:linear-gradient(150deg,#fff,var(--lila-soft));border-radius:20px;padding:28px;box-shadow:var(--sh-lila);display:flex;flex-direction:column}
   .tcard.green{background:linear-gradient(150deg,#fff,var(--verde-soft));box-shadow:var(--sh-verde)}
   .tcard .ttype{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--lila-deep);margin-bottom:12px;display:flex;align-items:center;gap:6px}
@@ -456,6 +473,10 @@
          · Audio:  reemplazá el src del <audio>
          · Video:  reemplazá el contenido de .t-media por <video controls>...</video>
        ============================================================ -->
+  <div class="testi-wrap">
+  <button class="car-btn left" aria-label="Ver anteriores" title="Retroceder">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
   <div class="testi-marquee">
     <div class="testi-track">
 
@@ -476,7 +497,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1spkiUY2NWX0apuwIuZgEjYGbCb-xBcGT"></audio>
+            <audio preload="none" src="assets/audio/kiomaris-nieves.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -492,7 +513,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1bKm3iNoXUelWOjlGXHtmGN5ZAkdtCUSP"></audio>
+            <audio preload="none" src="assets/audio/barbara-trujillo.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -508,7 +529,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=16FHYPTHx2X0jLlT0-crcOnwkDwwyRxBa"></audio>
+            <audio preload="none" src="assets/audio/priscila-urialdes.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -524,7 +545,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1NIJMoNZAPtYi3zFjqXNdFjnFG-BSqfYL"></audio>
+            <audio preload="none" src="assets/audio/sandy-cardoso.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -554,7 +575,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1spkiUY2NWX0apuwIuZgEjYGbCb-xBcGT"></audio>
+            <audio preload="none" src="assets/audio/kiomaris-nieves.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -570,7 +591,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1bKm3iNoXUelWOjlGXHtmGN5ZAkdtCUSP"></audio>
+            <audio preload="none" src="assets/audio/barbara-trujillo.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -586,7 +607,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=16FHYPTHx2X0jLlT0-crcOnwkDwwyRxBa"></audio>
+            <audio preload="none" src="assets/audio/priscila-urialdes.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -602,7 +623,7 @@
         <p>Escuchá la experiencia en sus propias palabras.</p>
         <div class="t-audio">
           <div class="ap">
-            <audio preload="none" src="https://drive.google.com/uc?export=download&confirm=t&id=1NIJMoNZAPtYi3zFjqXNdFjnFG-BSqfYL"></audio>
+            <audio preload="none" src="assets/audio/sandy-cardoso.mp3"></audio>
             <button class="ap-btn" aria-label="Reproducir audio">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ap-icon" d="M8 5v14l11-7z"/></svg>
             </button>
@@ -616,6 +637,10 @@
       </div>
 
     </div>
+  </div>
+  <button class="car-btn right" aria-label="Ver siguientes" title="Avanzar">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+  </button>
   </div>
 </section>
 
@@ -747,6 +772,8 @@
         icon.setAttribute('d',PLAY);
       }
     });
+    audio.addEventListener('play',function(){ if(window._carSetFrozen) window._carSetFrozen(true,'audio'); });
+    audio.addEventListener('pause',function(){ if(window._carSetFrozen) window._carSetFrozen(false,'audio'); });
     audio.addEventListener('timeupdate',function(){
       if(audio.duration){
         bar.style.width=(audio.currentTime/audio.duration*100)+'%';
@@ -757,6 +784,7 @@
       icon.setAttribute('d',PLAY);
       bar.style.width='0';
       timeEl.textContent='0:00';
+      if(window._carSetFrozen) window._carSetFrozen(false,'audio');
     });
     barWrap.addEventListener('click',function(e){
       if(audio.duration){
@@ -765,6 +793,135 @@
       }
     });
   });
+
+  // === Carrusel controlado por JS ===
+  (function(){
+    var wrap=document.querySelector('.testi-wrap');
+    var marquee=document.querySelector('.testi-marquee');
+    var track=document.querySelector('.testi-track');
+    if(!wrap||!marquee||!track) return;
+
+    // Desactiva la animacion CSS y toma control
+    track.style.animation='none';
+
+    var pos=0;
+    var BASE=0.55; // px/frame velocidad normal
+    var ZONE=0.18; // fraccion del ancho desde el borde que activa zona
+    var targetSpeed=-BASE;
+    var currentSpeed=-BASE;
+    var mouseX=null;
+    var pressing=null; // 'left'|'right'|null
+    var touching=null; // 'left'|'right'|null
+    var frozenBy={}; // razones por las que está detenido: {audio:true, card:true}
+
+    // API pública para congelar/descongelar desde fuera del IIFE
+    window._carSetFrozen=function(state,reason){ frozenBy[reason]=state; };
+
+    function isFrozen(){ return frozenBy.audio||frozenBy.card; }
+
+    function halfW(){ return track.scrollWidth/2; }
+    function lerp(a,b,t){ return a+(b-a)*t; }
+
+    function tick(){
+      if(!isFrozen()){
+        var w=marquee.offsetWidth;
+        var zone=w*ZONE;
+
+        if(pressing||touching){
+          targetSpeed=(pressing||touching)==='left' ? BASE*3.5 : -BASE*3.5;
+        } else if(mouseX!==null){
+          if(mouseX<zone){
+            var t=1-mouseX/zone;
+            targetSpeed=lerp(-BASE,BASE*3.5,t);
+            marquee.classList.add('zone-left');
+            marquee.classList.remove('zone-right');
+          } else if(mouseX>w-zone){
+            var t=(mouseX-(w-zone))/zone;
+            targetSpeed=lerp(-BASE,-BASE*3.5,t);
+            marquee.classList.add('zone-right');
+            marquee.classList.remove('zone-left');
+          } else {
+            targetSpeed=-BASE;
+            marquee.classList.remove('zone-left','zone-right');
+          }
+        } else {
+          targetSpeed=-BASE;
+          marquee.classList.remove('zone-left','zone-right');
+        }
+
+        currentSpeed=lerp(currentSpeed,targetSpeed,0.07);
+        pos+=currentSpeed;
+
+        var half=halfW();
+        if(pos<=-half) pos+=half;
+        if(pos>0) pos-=half;
+
+        track.style.transform='translateX('+pos.toFixed(2)+'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Seguimiento del mouse sobre el wrapper
+    wrap.addEventListener('mousemove',function(e){
+      var rect=marquee.getBoundingClientRect();
+      mouseX=e.clientX-rect.left;
+    });
+    wrap.addEventListener('mouseleave',function(){
+      mouseX=null;
+      pressing=null;
+      marquee.classList.remove('zone-left','zone-right');
+    });
+
+    // Click en una tarjeta → congelar; click fuera → descongelar
+    track.querySelectorAll('.tcard').forEach(function(card){
+      card.addEventListener('click',function(e){
+        // Ignorar clicks en el botón de audio para que no congelen dos veces
+        if(e.target.closest('.ap-btn')||e.target.closest('.ap-bar-wrap')) return;
+        var selected=card.classList.contains('car-selected');
+        track.querySelectorAll('.tcard').forEach(function(c){ c.classList.remove('car-selected'); });
+        if(selected){
+          card.classList.remove('car-selected');
+          window._carSetFrozen(false,'card');
+        } else {
+          card.classList.add('car-selected');
+          window._carSetFrozen(true,'card');
+        }
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.tcard')){
+        track.querySelectorAll('.tcard').forEach(function(c){ c.classList.remove('car-selected'); });
+        window._carSetFrozen(false,'card');
+      }
+    });
+
+    // Click sostenido en los botones
+    var btnLeft=wrap.querySelector('.car-btn.left');
+    var btnRight=wrap.querySelector('.car-btn.right');
+    function bindBtn(btn,dir){
+      btn.addEventListener('mousedown',function(e){ e.preventDefault(); pressing=dir; });
+      btn.addEventListener('touchstart',function(e){ e.preventDefault(); touching=dir; },{passive:false});
+      btn.addEventListener('touchend',function(){ touching=null; });
+      btn.addEventListener('touchcancel',function(){ touching=null; });
+    }
+    bindBtn(btnLeft,'left');
+    bindBtn(btnRight,'right');
+    document.addEventListener('mouseup',function(){ pressing=null; });
+
+    // Touch en zona del carrusel (mobile)
+    marquee.addEventListener('touchstart',function(e){
+      var rect=marquee.getBoundingClientRect();
+      var x=e.touches[0].clientX-rect.left;
+      var w=marquee.offsetWidth;
+      if(x<w*ZONE) touching='left';
+      else if(x>w*(1-ZONE)) touching='right';
+      else touching=null;
+    },{passive:true});
+    marquee.addEventListener('touchend',function(){ touching=null; });
+    marquee.addEventListener('touchcancel',function(){ touching=null; });
+
+    tick();
+  })();
 </script>
 </body>
 </html>
