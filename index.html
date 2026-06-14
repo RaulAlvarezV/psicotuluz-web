@@ -439,14 +439,14 @@
       </div>
       <div>
         <div class="portrait">
-          <picture><source srcset="assets/img/foto_fundadora_agustina.webp" type="image/webp"><img src="assets/img/foto_fundadora_agustina.png" alt="Lic. Agustina Acuña" loading="lazy"></picture>
+          <picture><source srcset="assets/img/foto_fundadora_agustina-v2.webp" type="image/webp"><img src="assets/img/foto_fundadora_agustina.png" alt="Lic. Agustina Acuña" loading="lazy"></picture>
         </div>
       </div>
     </div>
     <div class="who-team">
       <h2 class="sec" style="font-size:22px;margin:26px 0 18px">Equipo Psicotuluz</h2>
       <div class="teamrow">
-        <div class="tm lead"><div class="av"><picture><source srcset="assets/img/foto_perfil_agustina.webp" type="image/webp"><img class="av-agustina" src="assets/img/foto_perfil_agustina.png" alt="Agustina" loading="lazy"></picture></div><h4>Agustina</h4><span>Fundadora · Psicóloga clínica. Psicología Positiva, Terapia de Aceptación y Compromiso</span></div>
+        <div class="tm lead"><div class="av"><picture><source srcset="assets/img/foto_perfil_agustina-v2.webp" type="image/webp"><img class="av-agustina" src="assets/img/foto_perfil_agustina.png" alt="Agustina" loading="lazy"></picture></div><h4>Agustina</h4><span>Fundadora · Psicóloga clínica. Psicología Positiva, Terapia de Aceptación y Compromiso</span></div>
         <div class="tm"><div class="av"><picture><source srcset="assets/img/foto_perfil_soledad.webp" type="image/webp"><img src="assets/img/foto_perfil_soledad.jpg" alt="Soledad" loading="lazy"></picture></div><h4>Soledad</h4><span>Psicóloga · Psicóloga clínica. Terapia Cognitivo Conductual, Terapia de Aceptación y Compromiso</span></div>
         <div class="tm"><div class="av"><picture><source srcset="assets/img/foto_perfil_enrique_fit.webp" type="image/webp"><img class="av-enrique" src="assets/img/foto_perfil_enrique_fit.png" alt="Enrique" loading="lazy"></picture></div><h4>Enrique</h4><span>Psicólogo · Psicólogo clínico. Terapia Cognitivo Conductual, Psicología Deportiva</span></div>
       </div>
@@ -955,7 +955,7 @@
   try{
     var c=localStorage.getItem(KEY);
     if(c==="accepted"){loadGA();}
-    else if(c!=="rejected"){banner.hidden=false;}
+    else if(GA_ID.indexOf("XXXX")===-1 && c!=="rejected"){banner.hidden=false;}
     document.getElementById("cookie-accept").addEventListener("click",function(){localStorage.setItem(KEY,"accepted");banner.hidden=true;loadGA();});
     document.getElementById("cookie-reject").addEventListener("click",function(){localStorage.setItem(KEY,"rejected");banner.hidden=true;});
   }catch(e){}
