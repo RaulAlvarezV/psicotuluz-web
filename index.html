@@ -924,6 +924,7 @@
 <!-- Banner de consentimiento de cookies + Google Analytics 4 (RGS) -->
 <style>
   .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:720px;margin:0 auto;background:#fff;border:1px solid #e7ddd0;box-shadow:0 16px 40px rgba(94,74,112,.25);border-radius:16px;padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:'Mulish',system-ui,sans-serif}
+  .cookie-banner[hidden]{display:none}
   .cookie-banner p{margin:0;flex:1 1 320px;font-size:14px;line-height:1.5;color:#5e5c5c}
   .cookie-banner a{color:#b28ee1;font-weight:700;text-decoration:underline}
   .cookie-actions{display:flex;gap:10px;flex:0 0 auto}
@@ -956,8 +957,8 @@
     var c=localStorage.getItem(KEY);
     if(c==="accepted"){loadGA();}
     else if(GA_ID.indexOf("XXXX")===-1 && c!=="rejected"){banner.hidden=false;}
-    document.getElementById("cookie-accept").addEventListener("click",function(){localStorage.setItem(KEY,"accepted");banner.hidden=true;loadGA();});
-    document.getElementById("cookie-reject").addEventListener("click",function(){localStorage.setItem(KEY,"rejected");banner.hidden=true;});
+    document.getElementById("cookie-accept").addEventListener("click",function(){banner.hidden=true;try{localStorage.setItem(KEY,"accepted");}catch(e){}loadGA();});
+    document.getElementById("cookie-reject").addEventListener("click",function(){banner.hidden=true;try{localStorage.setItem(KEY,"rejected");}catch(e){}});
   }catch(e){}
 })();
 </script>
