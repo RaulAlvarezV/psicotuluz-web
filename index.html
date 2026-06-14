@@ -178,13 +178,14 @@
   .who .tags span{background:linear-gradient(150deg,var(--lila-soft),#efe6fb);color:var(--azul);font-size:13px;font-weight:700;padding:6px 13px;border-radius:20px;box-shadow:var(--sh-soft)}
   .teamrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .portrait{width:100%;aspect-ratio:16/10;border-radius:20px;background:linear-gradient(150deg,var(--lila-soft),#efe6fb);display:flex;align-items:center;justify-content:center;color:var(--lila-deep);font-family:var(--script);font-size:22px;overflow:hidden;position:relative;box-shadow:var(--sh-lila)}
-  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
   .av span,.portrait span{opacity:.8}
   .tm{background:linear-gradient(160deg,#fff,var(--lila-soft));border-radius:18px;padding:20px 16px;text-align:center;box-shadow:var(--sh-lila)}
   .tm.lead{background:linear-gradient(160deg,#fff,#fdeebf);box-shadow:0 16px 40px rgba(242,194,10,.3)}
   .tm .av{width:78px;height:78px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:var(--crema);font-family:var(--serif);font-size:12px;overflow:hidden;position:relative;background:linear-gradient(150deg,var(--lila),var(--lila-deep))}
   .tm.lead .av{background:linear-gradient(150deg,var(--amarillo),#d9a800);color:var(--tinta)}
-  .tm .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tm .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .tm .av img.av-agustina{object-position:center 15%}
   .tm h4{font-family:var(--serif);font-size:16px;color:var(--tinta)}
   .tm span{font-size:12px;color:var(--suave);font-weight:600}
   @media(max-width:680px){.who .who-top{grid-template-columns:1fr}}
@@ -434,23 +435,20 @@
         <h2 class="sec">Lic. Agustina Acuña</h2>
         <div class="role">Psicóloga · Fundadora de Psicotuluz</div>
         <p>Acompaño a mujeres que pueden con todo... menos con parar. Mi enfoque va directo al patrón que sostiene el agotamiento, no solo al síntoma que lo delata.</p>
-        <div class="tags"><span>Psicología Positiva</span><span>ACT</span><span>Mindfulness</span><span>Neuropsicología</span></div>
+        <div class="tags"><span>Psicología Positiva</span><span>Terapia de Aceptación y Compromiso</span><span>Mindfulness</span><span>Neuropsicología</span></div>
       </div>
       <div>
-        <!-- RETRATO DE AGUSTINA · reemplazá el contenido del div por: <img src="ruta/agustina.jpg" alt="Lic. Agustina Acuña"> -->
         <div class="portrait">
-          <!-- <img src="ruta/agustina.jpg" alt="Lic. Agustina Acuña"> -->
-          <span>Foto de Agustina</span>
+          <img src="assets/img/foto_fundadora_agustina.png" alt="Lic. Agustina Acuña" loading="lazy">
         </div>
       </div>
     </div>
     <div class="who-team">
       <h2 class="sec" style="font-size:22px;margin:26px 0 18px">Equipo Psicotuluz</h2>
       <div class="teamrow">
-        <!-- AVATAR · reemplazá el contenido de .av por: <img src="ruta/agustina.jpg" alt="Agustina"> -->
-        <div class="tm lead"><div class="av"><span>Foto</span></div><h4>Agustina</h4><span>Fundadora · Psicóloga clínica. Psi Positiva, TAC</span></div>
-        <div class="tm"><div class="av"><span>Foto</span></div><h4>Soledad</h4><span>Psicóloga · Psicóloga clínica. TCC, TAC</span></div>
-        <div class="tm"><div class="av"><span>Foto</span></div><h4>Enrique</h4><span>Psicólogo · Psicólogo clínico. TCC</span></div>
+        <div class="tm lead"><div class="av"><img class="av-agustina" src="assets/img/foto_perfil_agustina.png" alt="Agustina" loading="lazy"></div><h4>Agustina</h4><span>Fundadora · Psicóloga clínica. Psicología Positiva, Terapia de Aceptación y Compromiso</span></div>
+        <div class="tm"><div class="av"><img src="assets/img/foto_perfil_soledad.jpg" alt="Soledad" loading="lazy"></div><h4>Soledad</h4><span>Psicóloga · Psicóloga clínica. Terapia Cognitivo Conductual, Terapia de Aceptación y Compromiso</span></div>
+        <div class="tm"><div class="av"><img class="av-enrique" src="assets/img/foto_perfil_enrique_fit.png" alt="Enrique" loading="lazy"></div><h4>Enrique</h4><span>Psicólogo · Psicólogo clínico. Terapia Cognitivo Conductual, Psicología Deportiva</span></div>
       </div>
       <p style="font-size:14px;margin-top:14px">Todos online, en habla hispana, con la misma profundidad emocional.</p>
     </div>
